@@ -33,12 +33,12 @@ file_handler = logging.FileHandler('mamsa_utlities.log')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
-# @st.cache_resource(hash_funcs={})
-# def installff():
-#     os.system('sbase install geckodriver')
-#     os.system('ln -s /home/appuser/venv/lib/python3.10.13/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
+@st.cache_resource(hash_funcs={})
+def installff():
+    os.system('sbase install geckodriver')
+    os.system('ln -s /home/appuser/venv/lib/python3.10.13/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
 
-# installff()
+installff()
 
 
 #function to fetch article ids

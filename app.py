@@ -1,4 +1,10 @@
 import streamlit as st
+st.set_page_config(
+    page_title="MRS",
+    page_icon="📚"
+)
+
+
 from blog_utiliies import *
 import openai
 import streamlit as st
@@ -19,10 +25,7 @@ from selenium.webdriver.common.by import By
 import os, sys
 
 
-st.set_page_config(
-    page_title="MRS",
-    page_icon="📚"
-)
+
 
 openapi_key = st.secrets["OPENAI_API_KEY"]
 openai.api_key = openapi_key

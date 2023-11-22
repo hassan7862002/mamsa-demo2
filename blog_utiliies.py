@@ -15,7 +15,7 @@ from bs4 import BeautifulSoup
 import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
+import os,sys
 
 
 openapi_key = st.secrets["OPENAI_API_KEY"]
@@ -33,7 +33,12 @@ file_handler = logging.FileHandler('mamsa_utlities.log')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
+@st.cache_resource(hash_funcs={})
+def installff():
+    os.system('sbase install geckodriver')
+    os.system('ln -s /home/appuser/venv/lib/python3.10.13/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
 
+installff()
 
 
 #function to fetch article ids
@@ -204,6 +209,7 @@ def pdf_url_scrapping(urls,id_lst):
     for i in range(len(urls)):
         options = webdriver.FirefoxOptions()
         options.add_argument('--headless')
+        # options.headless = True
         driver = webdriver.Firefox(options=options)
         driver.get(urls[i])
         try:
